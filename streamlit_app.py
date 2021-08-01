@@ -79,16 +79,16 @@ def retrieve_post_content_after_end_of_front_matter(string, substring):
 
 # BUILD SIDEBAR
 
-st.sidebar.header("Simple Blogging with Streamlit")
+st.sidebar.header("Select a Post:")
 
 tag_selector = st.sidebar.selectbox('Tags to display:', sorted(all_tags.keys()), index=0)
-display_dates = st.sidebar.checkbox('Display dates', value=True)
+display_dates = st.sidebar.checkbox('Display dates', value=False)
 
 if display_dates == False:
-    selected_post = st.sidebar.radio('Select content', sorted(all_tags[tag_selector], reverse=False))
+    selected_post = st.sidebar.radio('Selected', sorted(all_tags[tag_selector], reverse=False))
 
 else:
-    selected_post = st.sidebar.radio('Select content', sorted([title_to_date_title[t] for t in all_tags[tag_selector]], reverse=True))
+    selected_post = st.sidebar.radio('Selected', sorted([title_to_date_title[t] for t in all_tags[tag_selector]], reverse=True))
     selected_post = date_title_to_title[selected_post]
 
 
@@ -111,7 +111,8 @@ else:
     contributor = ''
 
 date = post_info['date']
-st.markdown(f'*Written on * ***{date}***' + contributor)
+if date != '2099-01-01':
+    st.markdown(f'*Written on * ***{date}***' + contributor)
 
 
 # Publish content

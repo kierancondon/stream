@@ -1,7 +1,7 @@
 ---
 title: Liebreich on Hydrogen
 date: 2020-11-15
-tags: energy, summaries
+tags: energy
 ---
 
 ## Summary of: 
